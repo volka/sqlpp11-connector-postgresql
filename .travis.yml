@@ -30,7 +30,7 @@ install:
     - cd ..
     - git clone --branch develop --depth 1 https://github.com/rbock/sqlpp11.git
     - cd sqlpp11
-    - cmake . -DHinnantDate_ROOT_DIR="$PWD/../date"
+    - cmake . -DDATE_INCLUDE_DIR="$PWD/../date"
     - sudo make install
     - cd ..
     - cd sqlpp11-connector-postgresql
@@ -38,7 +38,7 @@ install:
 before_script:
     - mkdir build
     - cd build
-    - cmake .. -DCMAKE_PREFIX_PATH="/usr/local/" -DDATE_INCUDE_DIR="$PWD/../../date"
+    - cmake .. -DCMAKE_PREFIX_PATH="/usr/local/" -DDATE_INCLUDE_DIR="$PWD/../../date"
 
 script:
     - cmake --build .
