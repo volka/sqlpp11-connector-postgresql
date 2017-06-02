@@ -29,8 +29,6 @@ project(sqlpp11-connector-postgresql VERSION 0.1 LANGUAGES CXX)
 
 set(ConfigPackageLocation lib/cmake/sqlpp-postgresql)
 
-set(DATE_INCLUDE_DIR "/home/volker/code/date")
-
 # find_package(Sqlpp11 REQUIRED)
 set(SQLPP11_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../sqlpp11/include" CACHE FILEPATH "Path to sqlpp11 includes")
 
