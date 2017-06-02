@@ -40,11 +40,10 @@ add_library(sqlpp-postgresql-dynamic SHARED
 get_filename_component(POSTGRESQL_LIB_FILE ${PostgreSQL_LIBRARIES} NAME)
 target_compile_options(sqlpp-postgresql-dynamic INTERFACE -DSQLPP_DYNAMIC_LOADING)
 target_compile_options(sqlpp-postgresql-dynamic PRIVATE -DSQLPP_DYNAMIC_LOADING -DSQLPP_DYNAMIC_LOADING_FILENAME=${POSTGRESQL_LIB_FILE})
-target_compile_features(sqlpp-postgresql PRIVATE
-	cxx_auto_type)
+target_compile_features(sqlpp-postgresql PRIVATE cxx_auto_type)
+target_compile_features(sqlpp-postgresql-dynamic PRIVATE cxx_auto_type)
 
 target_link_libraries(sqlpp-postgresql PRIVATE ${PostgreSQL_LIBRARIES})
-#target_link_libraries(sqlpp-postgresql-dynamic PRIVATE ${PostgreSQL_LIBRARIES})
 
 target_include_directories(sqlpp-postgresql PRIVATE ${PostgreSQL_INCLUDE_DIRS} "../include/")
 target_include_directories(sqlpp-postgresql-dynamic PRIVATE ${PostgreSQL_INCLUDE_DIRS} "../include/")
@@ -60,6 +59,8 @@ set(sqlpp-postgresql_VERSION_PATCH 0)
 set(sqlpp-postgresql_VERSION_STRING ${sqlpp-postgresql_VERSION_MAJOR}.${sqlpp-postgresql_VERSION_MINOR}.${sqlpp-postgresql_VERSION_PATCH})
 set_target_properties(sqlpp-postgresql PROPERTIES VERSION ${sqlpp-postgresql_VERSION_STRING}
 	        SOVERSION ${sqlpp-postgresql_VERSION_MAJOR})
+set_target_properties(sqlpp-postgresql-dynamic PROPERTIES VERSION ${sqlpp-postgresql_VERSION_STRING}
+            SOVERSION ${sqlpp-postgresql_VERSION_MAJOR})
 
 install(TARGETS sqlpp-postgresql
         EXPORT postgresqlTargets
